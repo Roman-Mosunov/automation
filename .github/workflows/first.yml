@@ -23,8 +23,8 @@ jobs:
         with:
           server_address: sandbox.smtp.mailtrap.io
           server_port: 2525
-          username: 23fb80b91fa81a
-          password: dff0f98934208a
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASS }}
           subject: An unexpected error occured!
           body: ${{ github.workflow }} of ${{ github.repository }} has failed
           to: receiver@email.com
