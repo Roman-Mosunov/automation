@@ -7,8 +7,30 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
+      - uses: dawidd6/action-send-mail@v3
       - uses: actions/checkout@v4
       - name: Test Application
         run: |
           chmod +x test.sh
           ./test.sh
+  email_sending:
+    runs-on: 'ubuntu-22.04'
+    needs: test
+    if: ${{ failure() }}
+    steps:
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: sandbox.smtp.mailtrap.io
+          server_port: 2525
+          username: 23fb80b91fa81a
+          password: dff0f98934208a
+          subject: An unexpected error occured!
+          body: ${{ github.workflow }} of ${{ github.repository }} has failed
+          to: receiver@email.com
+          from: sender@email.com
+          
+          MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+
