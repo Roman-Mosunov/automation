@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - name: Test application
+      - name: Test Application
         run: |
           chmod +x test.sh
           ./test.sh
