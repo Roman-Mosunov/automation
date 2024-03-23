@@ -29,8 +29,4 @@ jobs:
           body: ${{ github.workflow }} of ${{ github.repository }} has failed
           to: receiver@email.com
           from: sender@email.com
-          
-          MAIL_MAILER=smtp
-MAIL_HOST=sandbox.smtp.mailtrap.io
-MAIL_PORT=2525
 
