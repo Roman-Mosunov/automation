@@ -32,5 +32,5 @@ jobs:
       - name: sart container
         run: docker compose up -d
       - name: wait for container start
-        run: run tests
+        run: run tests |
         run docker compose exec -T web python manage.py test
