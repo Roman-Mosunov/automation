@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 jobs:
   run_python_app:
-  runs-on: ubuntu-22.04
+  runs-on: 'ubuntu-22.04'
   steps:
     - uses: actions/setup-python@v5
       with:
