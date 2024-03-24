@@ -17,7 +17,7 @@ jobs:
     runs-on: 'ubuntu-22.04'
     steps:
       - uses: actions/checkout@v4
-      - name: create Environment file
+      - name: Create Environment File
         run: |
           echo "DJANGO_SECRET_KEY=${{env.DJANGO_SECRET_KEY}}" >> .env
           echo "DJANGO_DEBUG=${{env.DJANGO_DEBUG}}" >> .env
@@ -29,8 +29,9 @@ jobs:
           echo "DB_PORT=${{env.DB_PORT}}" >> .env
           echo "MYSQL_ROOT_PASSWORD=${{env.DB_PASSWORD}}" >> .env
           echo "MYSQL_DATABASE=${{env.DB_NAME}}" >> .env
-      - name: sart container
+      - name: Start Containers
         run: docker compose up -d
-      - name: wait for container start
-        run: run tests |
-        run docker compose exec -T web python manage.py test
+      - name: Wait for Containers Start
+        run: sleep 30
+      - name: Run Tests
+        run: docker compose exec -T web python manage.py test
