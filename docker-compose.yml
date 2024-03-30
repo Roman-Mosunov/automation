@@ -28,7 +28,7 @@ services:
             - static_volume:/app/static
             - uploads_volume:/app/uploads
         ports:
-            - 80:80
+            - 3010:80
         depends_on:
             - web
 
